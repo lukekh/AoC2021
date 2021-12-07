@@ -130,3 +130,5 @@ dmypy.json
 
 # Ignore template folder
 Template/*
+credentials.py
+
