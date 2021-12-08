@@ -19,14 +19,18 @@ def scrape(n):
     d = datetime.datetime(2021, 12, n, 15, 30, 0)
     delta = time.mktime(d.timetuple()) - time.time()
 
-    if delta < 30:
-        time.sleep(max(0, delta + 0.1))
+    if delta < 61:
+        if delta > 0:
+            print('*'*23 + f'\nWaiting {delta:.0f}s for puzzle drop\n' + '*'*23)
+            time.sleep(delta + 0.01)
 
         with requests.Session() as r:
             response = r.get(uri, cookies=credentials, timeout=5).text
 
         with open(f"{s}/{s}.in", 'w') as f:
             f.write(response)
+        
+        print("\n\n Happy puzzling!"
     else:
         raise ScrapeError("You are running this too early.")
 
