@@ -30,7 +30,7 @@ def scrape(n):
         with open(f"{s}/{s}.in", 'w') as f:
             f.write(response)
         
-        print("\n\n Happy puzzling!"
+        print("\n\n Happy puzzling!")
     else:
         raise ScrapeError("You are running this too early.")
 
