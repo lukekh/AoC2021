@@ -20,17 +20,20 @@ def scrape(n):
     delta = time.mktime(d.timetuple()) - time.time()
 
     if delta < 61:
+        print('*'*23)
         if delta > 0:
-            print('*'*23 + f'\nWaiting {delta:.0f}s for puzzle drop\n' + '*'*23)
+            print(f'Waiting {delta:.0f}s for puzzle drop')
             time.sleep(delta + 0.01)
-
+        
+        print('Getting inputs')
         with requests.Session() as r:
             response = r.get(uri, cookies=credentials, timeout=5).text
-
+        
+        print(f'Writing to {s}/{s}.in')
         with open(f"{s}/{s}.in", 'w') as f:
             f.write(response)
         
-        print("\n\n Happy puzzling!")
+        print("Happy puzzling!\n"+ '*'*23)
     else:
         raise ScrapeError("You are running this too early.")
 
