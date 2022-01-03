@@ -135,11 +135,11 @@ class Box:
                     if not (b < other):
                         option2.add(b)
             if len(option1) < len(option2):
-                return option1
+                return Boxes(option1)
             else:
-                return option2
+                return Boxes(option2)
         else:
-            return {self, other}
+            return Boxes({self, other})
                 
             
 
